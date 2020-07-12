@@ -1,4 +1,4 @@
-var Stack = function(){
+var myStack = function(){
   this.count = 0
   this.storage = {}
 
@@ -28,7 +28,7 @@ var Stack = function(){
 
 }
 
-var mystac = new Stack()
+var mystac = new myStack()
 
 mystac.push(11)
 mystac.push("stacks done")
