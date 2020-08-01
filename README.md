@@ -1,38 +1,38 @@
-# DataStructures
-Data Structures and Algorithms in JavaScript
+# Data Structures and Algorithms in JavaScript
 
-Best Reference: https://www.youtube.com/playlist?list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P
+## Best place to Learn Basics of Data Structures:
+_mycodeschool [Youtube Channel](https://www.youtube.com/user/mycodeschool/playlists)_  
+*William Fiset [Youtube Channel](https://www.youtube.com/c/WilliamFiset-videos/playlists)*  
 
-Data Structures and their methods implement in the repo:
+## Data Structures and their methods implement in the repo:
 
-Stacks:
+1. __Stacks__:  
 push, pop, peek, size
 
-Sets:
+1. __Sets__:  
 add, remove, has, values, size, union, intersection, difference, subset
 
-Priority Queue:
+1. __Priority Queue__:  
 enqueue, dequeue, front, size, print, isEmpty
 
-Binary Search Tree(BST):
+1. __Binary Search Tree(BST)__:  
 add, remove, findMin, findMax, find, isPresent, findMaxHeight, isBalanced
+    1. __Tree traversals__:  
+    inOrder, preOrder, postOrder, levelOrder
 
-Tree traversals:
-inOrder, preOrder, postOrder, levelOrder
-
-HashTable:
+1. __HashTable__:  
 add, remove, lookup, print
 
-LinkedList:
+1. __LinkedList__:  
 add, remove, isEmpty, indexOf, elementAt, addAt, removeAt, size, head
 
-Trie (A tree like structure to store Words):
+1. __Trie__ (A tree like structure to store Words):
 add, isWord, print
 
-Heap:
-MinHeap:
+1. __Heap__:  
+MinHeap__:  
 insert, remove, sort(HeapSort), print
 
-Graph:
+1. __Graph__:  
 Breadth First Search (BFS)
 
