@@ -49,3 +49,7 @@ console.log(isPrime(17));
 console.log(2, isPrime(2));
 console.log(3, isPrime(3));
 console.log(5, isPrime(5));
+
+
+
+
