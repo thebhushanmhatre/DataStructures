@@ -6,20 +6,20 @@
 function nextGreaterElement(arr) {
   let largerElementStack = [];
   let result = [];
-  for (let i=arr.length-1; i >= 0; i--) {
+  for (let i = arr.length - 1; i >= 0; i--) {
     if (largerElementStack.length == 0) {
       result[i] = -1;
       largerElementStack.push(arr[i]);
     } else {
       while (
         largerElementStack.length > 0 &&
-        largerElementStack[largerElementStack.length-1] <= arr[i]
+        largerElementStack[largerElementStack.length - 1] <= arr[i]
       ) {
         largerElementStack.pop();
       }
       if (largerElementStack.length == 0) {
         result[i] = -1;
-        largerElementStack.push(arr[i]); 
+        largerElementStack.push(arr[i]);
       } else if (largerElementStack[largerElementStack.length - 1] > arr[i]) {
         result[i] = largerElementStack[largerElementStack.length - 1];
         largerElementStack.push(arr[i]);
@@ -35,18 +35,19 @@ function nextGreaterElement(arr) {
 // console.log(nextGreaterElement([8, 9, 95, 4, 7]));
 // console.log(nextGreaterElement([7, 5, 3, 1, 5, 9, 12, 45, 89]));
 
-
-
 function nextGreaterElementCircular(arr) {
   let helpStack = [];
   let result = [];
-  for (let i = arr.length*2 - 1; i >= 0; i--) {
+  for (let i = arr.length * 2 - 1; i >= 0; i--) {
     if (helpStack.length == 0) {
       result[i] = -1;
       helpStack.push(arr[i % arr.length]);
     } else {
-      while (helpStack.length > 0 && arr[i % arr.length] >= helpStack[helpStack.length-1]) {
-        helpStack.pop()
+      while (
+        helpStack.length > 0 &&
+        arr[i % arr.length] >= helpStack[helpStack.length - 1]
+      ) {
+        helpStack.pop();
       }
       if (helpStack.length == 0) {
         result[i] = -1;
