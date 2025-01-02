@@ -95,4 +95,51 @@ function verticalOrder(root) {
   return formatData(nodePositions);
 }
 
-console.log('vertical order: ', verticalOrder(testTree));
+// console.log('vertical order: ', verticalOrder(testTree));
+
+// coding after long time
+function getVerticalOrder(root) {
+  // map: {x: y: [...nodes]} - store all nodes
+  // queue: <nodeValue, x, y>[] - for iteration
+  const nodesMap = {};
+  let nodeQueue = [];
+  nodeQueue.push([root, 0, 0]);
+  let maxLevel = 0,
+    minLevel = 0;
+
+  while (nodeQueue.length != 0) {
+    let nodeInfo = nodeQueue.shift();
+
+    if (!nodesMap[nodeInfo[1]]) nodesMap[nodeInfo[1]] = {};
+    if (!nodesMap[nodeInfo[1]][nodeInfo[2]])
+      nodesMap[nodeInfo[1]][nodeInfo[2]] = [];
+
+    nodesMap[nodeInfo[1]][nodeInfo[2]].push(nodeInfo[0].val);
+
+    if (nodeInfo[0].left) {
+      nodeQueue.push([nodeInfo[0].left, nodeInfo[1] - 1, nodeInfo[2] + 1]);
+      if (nodeInfo[1] - 1 < minLevel) {
+        minLevel = nodeInfo[1] - 1;
+      }
+    }
+    if (nodeInfo[0].right) {
+      nodeQueue.push([nodeInfo[0].right, nodeInfo[1] + 1, nodeInfo[2] + 1]);
+      if (nodeInfo[1] + 1 > maxLevel) {
+        maxLevel = nodeInfo[1] + 1;
+      }
+    }
+  }
+
+  const result = [];
+  for (let i = 0; i <= maxLevel - minLevel; i++) {
+    result[i] = [];
+    for (const j in nodesMap[minLevel + i]) {
+      result[i] = [...result[i], ...nodesMap[minLevel + i][j]];
+    }
+    result[i] = result[i].sort((a, b) => a - b);
+  }
+
+  return result;
+}
+
+console.log('get vertical order: ', getVerticalOrder(testTree));
