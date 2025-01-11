@@ -8,25 +8,17 @@ function reverseLL(head) {
     return head;
   }
 
-  let nextNode = head.next;
-  let prev = -1;
+  let temp = head;
+  let prev = null;
 
-  while (nextNode) {
-    if (prev == -1) {
-      prev = head;
-      prev.next = null;
-    } else {
-      prev = head;
-    }
-
-    // ORDER MATTERS
-    head = nextNode;
-    nextNode = nextNode.next;
-    head.next = prev;
+  while (temp) {
+    let nextNode = temp.next;
+    temp.next = prev;
+    prev = temp;
+    temp = nextNode;
   }
 
-  head.next = prev;
-  return head;
+  return prev;
 }
 
 // head = reverseLL(head);
