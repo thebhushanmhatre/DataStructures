@@ -3,18 +3,33 @@
 // eg: 2,1,4,9  => ans = 11 => 2 + 9
 
 // using normal recursion
-function _maxNonAdjSum(nums, i) {
+function rMaxNonAdjSum(nums, i = nums.length - 1) {
   if (i == 0) return nums[i];
   if (i < 0) return 0;
 
-  let picked = nums[i] + maxNonAdjSum(nums, i - 2);
-  let notPicked = maxNonAdjSum(nums, i - 1);
+  let picked = nums[i] + rMaxNonAdjSum(nums, i - 2);
+  let notPicked = rMaxNonAdjSum(nums, i - 1);
 
   return Math.max(picked, notPicked);
 }
 
+// // Alternate
+// function rMaxNonAdjSum(nums, i = 0) {
+//   // if (i == 0) return nums[i];
+//   if (i >= nums.length) return 0;
+
+//   let picked = nums[i] + rMaxNonAdjSum(nums, i + 2);
+//   let notPicked = rMaxNonAdjSum(nums, i + 1);
+
+//   return Math.max(picked, notPicked);
+// }
+
+let arr2 = [1, 2, 4];
+const ans2 = rMaxNonAdjSum(arr2);
+console.log('ans2: ', ans2);
+
 // using memoization to optimize (recursion)
-function _maxNonAdjSum(nums, i, memo = []) {
+function _maxNonAdjSum(nums, i = nums.length - 1, memo = []) {
   if (memo[i]) return memo[i];
   if (i == 0) return nums[i];
   if (i < 0) return 0;

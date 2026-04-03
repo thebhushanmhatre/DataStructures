@@ -1,0 +1,45 @@
+** start of script.js **
+
+function permAlone(str) {
+  let allPermutations = [];
+  getAllPermutations(str.split(''), 0, allPermutations);
+  console.log('allPermutations', allPermutations)
+
+  return allPermutations.filter((item) => {
+    // return false to remove the element, otherwise true
+
+    let hasRepeatingChar = false;
+    let m = str.length;
+    for (let i = 0; i < m-1; i++) {
+      if (item[i] == item[i+1]) {
+        hasRepeatingChar = true;
+        break;
+      }
+    }
+
+    return !hasRepeatingChar;
+  }).length;
+}
+
+function getAllPermutations(str, index, result) {
+  let n = str.length;
+  if (index == n) {
+    result.push(str.join(''));
+    return;
+  }
+
+  for (let i = index; i < n; i++) {
+    // swap elements at i and index
+    [str[i], str[index]] = [str[index], str[i]];
+
+    getAllPermutations(str, index+1, result);
+
+    // swap back for next iteration
+    [str[i], str[index]] = [str[index], str[i]];
+  }
+}
+
+permAlone('aab');
+
+** end of script.js **
+

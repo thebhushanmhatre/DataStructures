@@ -91,11 +91,20 @@ function formatData(data) {
 function verticalOrder(root) {
   let nodePositions = {}; // (vertical - y, horizontal - x, value)
   getCoOrdinates(root, { x: 0, y: 0 }, nodePositions);
+  console.log('nodePositions: ', nodePositions);
   // Formatting into the required format
   return formatData(nodePositions);
 }
 
-// console.log('vertical order: ', verticalOrder(testTree));
+// x: {y : [...nodes]}
+// nodePositions:  {
+//   '0': { '0': [ 1 ], '-4': [ 6 ], '-2': [ 10, 9 ] },
+//   '1': { '-1': [ 3 ] },
+//   '2': { '-2': [ 10 ] },
+//   '-1': { '-1': [ 2 ], '-3': [ 5 ] },
+//   '-2': { '-2': [ 4 ] }
+// }
+console.log('vertical order: ', verticalOrder(testTree));
 
 // coding after long time
 function getVerticalOrder(root) {
@@ -142,4 +151,4 @@ function getVerticalOrder(root) {
   return result;
 }
 
-console.log('get vertical order: ', getVerticalOrder(testTree));
+// console.log('get vertical order: ', getVerticalOrder(testTree));

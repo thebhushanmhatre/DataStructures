@@ -1,0 +1,54 @@
+** start of script.js **
+
+// Merge sort uses a divide-and-conquer, recursive methodology to sort an array. It takes advantage of the fact that it is relatively easy to sort two arrays as long as each is sorted in the first place. But we'll start with only one array as input, so how do we get to two sorted arrays from that? Well, we can recursively divide the original input in two until we reach the base case of an array with one item. A single-item array is naturally sorted, so then we can start combining. This combination will unwind the recursive calls that split the original array, eventually producing a final sorted array of all the elements. The steps of merge sort, then, are:
+
+// 1) Recursively split the input array in half until a sub-array with only one element is produced.
+
+// 2) Merge each sorted sub-array together to produce the final sorted array.
+
+// Merge sort is an efficient sorting method, with time complexity of O(nlog(n)). This algorithm is popular because it is performant and relatively easy to implement.
+
+function mergeSort(arr) {
+  // Only change code below this line
+  if (arr.length > 1) {
+    let mid = Math.floor(arr.length*0.5);
+    let left = mergeSort(arr.slice(0, mid));
+    let right = mergeSort(arr.slice(mid));
+
+    arr = merge(left, right);
+  }
+
+  return arr;
+  // Only change code above this line
+}
+
+function merge(left, right) {
+  let result = [];
+
+  let i = 0, j = 0, l = left.length, r = right.length;
+
+  while (i < l && j < r) {
+    if (left[i] <= right[j]) {
+      result.push(left[i]);
+      i++;
+    } else {
+      result.push(right[j]);
+      j++
+    }
+  }
+
+  while (i < l) {
+    result.push(left[i]);
+    i++;
+  }
+
+  while (j < r) {
+    result.push(right[j]);
+    j++
+  }
+
+  return result;
+}
+
+** end of script.js **
+

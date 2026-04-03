@@ -1,0 +1,66 @@
+** start of script.js **
+
+function pairwise(arr, arg) {
+  let n = arr.length;
+  let usedIndexes = Array.from({length: n}, () => 0); // 1 if used, 0 by default
+  let numIndexMap = new Map(); // num -> [index]
+  let sumOfIndices = 0;
+
+  for (let i = 0; i < n; i++) {
+    let num = arr[i];
+    // add all num in map
+    if (numIndexMap.has(num)) {
+      numIndexMap.set(num, [...numIndexMap.get(num), i]);
+    } else {
+      numIndexMap.set(num, [i]);
+    }
+
+    let remainder = arg - num;
+    if (numIndexMap.has(remainder)) {
+      // has a pair, check if indexes are used
+      let indexList = numIndexMap.get(remainder);
+      let otherIndex = indexList[0];
+
+      // consider the index only if its not
+      if (i != otherIndex && usedIndexes[otherIndex] == 0) {
+        // console.log('pair: ', {i, otherIndex, num, remainder})
+        // valid pair
+        sumOfIndices += i + otherIndex;
+        usedIndexes[i] = 1;
+        usedIndexes[otherIndex] = 1;
+        // remove index of remainder so its not used again
+        indexList.shift();
+        if (indexList.length > 0) {
+          numIndexMap.set(remainder, indexList);
+        } else {
+          numIndexMap.delete(remainder);
+        }
+        // remove index of current so its not used again
+        let currElementIndexList = numIndexMap.get(num);
+        currElementIndexList.shift();
+        if (currElementIndexList.length > 0) {
+          numIndexMap.set(num, currElementIndexList);
+        } else {
+          numIndexMap.delete(num);
+        }
+      }
+    }
+  }
+  
+  return sumOfIndices;
+}
+
+// pairwise([1,4,2,3,0,5], 7);
+// pairwise([1, 3, 2, 4], 4)
+pairwise([0, 0, 0, 0, 1, 1], 1);
+
+// [0, 0, 0, 0, 1, 1]
+//  0           4          
+//     1           5
+// Following not possible since lowest possible indexes should be used:
+//           3     5
+//        2        5
+// ... 
+
+** end of script.js **
+

@@ -1,0 +1,99 @@
+** start of script.js **
+
+function LinkedList() {
+  var length = 0;
+  var head = null;
+
+  var Node = function(element){
+    this.element = element;
+    this.next = null;
+  };
+
+  this.size = function() {
+    return length;
+  };
+
+  this.head = function(){
+    return head;
+  };
+
+  this.add = function(element){
+    var node = new Node(element);
+    if(head === null){
+        head = node;
+    } else {
+      var currentNode = head;
+
+      while(currentNode.next){
+        currentNode = currentNode.next;
+      }
+
+      currentNode.next = node;
+    }
+
+    length++;
+  };
+
+  this.remove = function(element){
+    var currentNode = head;
+    var previousNode;
+    if(currentNode.element === element){
+      head = currentNode.next;
+    } else {
+      while(currentNode.element !== element) {
+        previousNode = currentNode;
+        currentNode = currentNode.next;
+      }
+
+      previousNode.next = currentNode.next;
+    }
+
+    length --;
+  };
+
+  // Only change code below this line
+
+  this.isEmpty = function () {
+    return (length == 0);
+  }
+  
+  this.indexOf = function (element) {
+    let index = 0;
+    
+    if (head.element == element) {
+      return index;
+    } else {
+      let curr = head;
+      while (curr) {
+        if (curr.element == element) {
+          return index;
+        }
+        curr = curr.next;
+        index++;
+      }
+    }
+
+    return -1;
+  }
+
+  this.elementAt = function (index) {
+    let count = 0;
+    let curr = head;
+
+    while (curr) {
+      if (count == index) {
+        return curr.element;
+      } else {
+        curr = curr.next;
+        count++;
+      }
+    }
+
+    return undefined;
+  }
+
+  // Only change code above this line
+}
+
+** end of script.js **
+

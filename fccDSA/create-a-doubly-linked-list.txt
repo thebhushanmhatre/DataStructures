@@ -1,0 +1,66 @@
+** start of script.js **
+
+var Node = function(data, prev) {
+  this.data = data;
+  this.prev = prev;
+  this.next = null;
+};
+var DoublyLinkedList = function() {
+  this.head = null;
+  this.tail = null;
+  // Only change code below this line
+
+  this.add = function (element) {
+    let newNode = new Node(element);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      newNode.prev = this.tail;
+      this.tail = newNode;
+    }
+  }
+
+  this.remove = function (element) {
+    // empty list
+    if (!this.head) {
+      return null;
+    }
+
+    // handle deletion of head
+    while (this.head && this.head.data == element) {
+      let nextNode = this.head.next;
+      nextNode.prev = null;
+      this.head.next = null;
+      this.head = nextNode;
+    }
+    
+    // handle deletion of tail
+    while(this.tail && this.tail.data == element) {
+      let prevNode = this.tail.prev;
+      prevNode.next = null;
+      this.tail.prev = null;
+      this.tail = prevNode;
+    }
+
+    let curr = this.head;
+    while (curr) {
+      if (curr.data == element) {
+        let prevNode = curr.prev;
+        let nextNode = curr.next;
+        prevNode.next = nextNode;
+        nextNode.prev = prevNode;
+        curr.next = null;
+        curr.prev = null;
+        curr = nextNode;        
+      }
+    }
+  }
+  
+  // Only change code above this line
+};
+
+** end of script.js **
+

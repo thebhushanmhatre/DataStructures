@@ -1,0 +1,25 @@
+** start of script.js **
+
+// Insertion Sort works by building up a sorted array at the beginning of the list. It begins the sorted array with the first element. Then it inspects the next element and swaps it backwards into the sorted array until it is in sorted position. It continues iterating through the list and swapping new items backwards into the sorted portion until it reaches the end. This algorithm has quadratic time complexity in the average and worst cases.
+
+function insertionSort(arr) {
+  // Only change code below this line
+  let n = arr.length;
+  for (let i = 1; i < n; i++) {
+    // Elements from 0 to i are sorted, so place the i+1 th elemented in its proper place by going back one place at a time
+    for (let j = i; j > 0; j--) {
+      if (arr[j] < arr[j-1]) {
+        // swap
+        [arr[j], arr[j-1]] = [arr[j-1], arr[j]];
+      } else {
+        // j is in place, stop this loop
+        break;
+      }
+    }
+  }
+  return arr;
+  // Only change code above this line
+}
+
+** end of script.js **
+

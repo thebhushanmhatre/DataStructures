@@ -8,9 +8,9 @@ let Node = {
 };
 
 // Example:
-//     1
-//  2     3
-// 4 5   6  7
+//       1
+//   2       3
+// 4   5   6   7
 
 let testTree = {
   val: 1,
@@ -66,7 +66,7 @@ function inorderVals(root, ans = []) {
 
 // Iterative - Non-recursive  ----  Difficult
 function iterativeInorder(root) {
-  let ans = [];
+  let result = [];
   let stack = [];
   let currentNode = root;
   // console.log({ root, currentNode, same: root === currentNode });
@@ -75,12 +75,12 @@ function iterativeInorder(root) {
       stack.push(currentNode);
       currentNode = currentNode.left;
     } else {
-      if (stack.length <= 0) {
+      if (stack.length == 0) {
         // console.log({ root, currentNode, same: root === currentNode });
-        return ans;
+        return result;
       }
       currentNode = stack.pop();
-      ans.push(currentNode.val);
+      result.push(currentNode.val);
       currentNode = currentNode.right;
     }
   }

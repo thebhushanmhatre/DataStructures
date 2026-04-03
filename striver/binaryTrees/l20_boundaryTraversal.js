@@ -131,3 +131,63 @@ function boundaryTraversal(root) {
 // console.log(isLeafNode({ val: 4, left: { val: 45 }, right: null }));
 
 console.log('Boundary Traversal: ', ...boundaryTraversal(testTree));
+
+//            1
+//    2           7
+//  3   12         _  8
+// _  _ 4  _          9   _
+//    5  6            10  11
+
+let testTree2 = {
+  val: 1,
+  left: {
+    val: 2,
+    left: {
+      val: 3,
+      left: null,
+      right: null,
+    },
+    right: {
+      val: 12,
+      left: {
+        val: 4,
+        left: {
+          val: 5,
+          left: null,
+          right: null,
+        },
+        right: {
+          val: 6,
+          left: null,
+          right: null,
+        },
+      },
+      right: null,
+    },
+  },
+  right: {
+    val: 7,
+    left: null,
+    right: {
+      val: 8,
+      left: {
+        val: 9,
+        left: {
+          val: 10,
+          left: null,
+          right: null,
+        },
+        right: {
+          val: 11,
+          left: null,
+          right: null,
+        },
+      },
+      right: null,
+    },
+  },
+};
+
+console.log('Boundary Traversal: ', ...boundaryTraversal(testTree2));
+// 1 2 3 5 6 10 11 9 8 7
+// code is correct, no need to worry about 4 as its internal node, not boundary - As per Gemini and other code that I saw on TUF

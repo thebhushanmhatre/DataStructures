@@ -1,0 +1,24 @@
+** start of script.js **
+
+// Selection sort works by selecting the minimum value in a list and swapping it with the first value in the list. It then starts at the second position, selects the smallest value in the remaining list, and swaps it with the second element. It continues iterating through the list and swapping elements until it reaches the end of the list. Now the list is sorted. Selection sort has quadratic time complexity in all cases.
+
+function selectionSort(arr) {
+  // Only change code below this line
+  let n = arr.length;
+  for (let i = 0; i < n; i++) {
+    let indexOfMin = i;
+    for (let j = i+1; j < n; j++) {
+      if (arr[j] < arr[indexOfMin]) {
+        indexOfMin = j;
+      }
+    }
+
+    // swap elements at indexOfMin with i
+    [arr[indexOfMin], arr[i]] = [arr[i], arr[indexOfMin]];
+  }
+  return arr;
+  // Only change code above this line
+}
+
+** end of script.js **
+

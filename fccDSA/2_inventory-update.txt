@@ -1,0 +1,37 @@
+** start of script.js **
+
+function updateInventory(arr1, arr2) {
+    let itemIndexMap = new Map(); // name -> index
+    arr1.forEach(([_, name], index) => itemIndexMap.set(name, index));
+
+    for (let [qty, name] of arr2) {
+        if (itemIndexMap.has(name)) {
+            let currIndex = itemIndexMap.get(name)
+            arr1[currIndex][0] = arr1[currIndex][0] + qty;
+        } else {
+            arr1.push([qty, name]);
+        }
+    }
+
+    return arr1.sort((a,b) => a[1].localeCompare(b[1]));
+}
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [2, "Hair Pin"],
+    [3, "Half-Eaten Apple"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+
+updateInventory(curInv, newInv);
+
+** end of script.js **
+

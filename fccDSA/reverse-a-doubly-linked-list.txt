@@ -1,0 +1,39 @@
+** start of script.js **
+
+var Node = function(data, prev) {
+  this.data = data;
+  this.prev = prev;
+  this.next = null;
+};
+var DoublyLinkedList = function() {
+  this.head = null;
+  this.tail = null;
+  // Only change code below this line
+
+  this.reverse = function () {
+    if (!this.head) {
+      return null;
+    }
+
+    let curr = this.head;
+    while (curr) {
+      let prevNode = curr.prev;
+      let nextNode = curr.next;
+
+      // change the pointers of current
+      curr.next = prevNode;
+      curr.prev = nextNode;
+
+      // prepare for next iteration
+      curr = nextNode;
+    }
+
+    // interchange the tail and head pointers
+    [this.tail, this.head] = [this.head, this.tail];
+  }
+  
+  // Only change code above this line
+};
+
+** end of script.js **
+
